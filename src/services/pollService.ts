@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { axiosInstance } from 'services/apiCore';
 import { PollResponse } from 'types/api';
 
