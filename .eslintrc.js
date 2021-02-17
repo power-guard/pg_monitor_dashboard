@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier/@typescript-eslint',
   ],
-  plugins: ['prettier', '@typescript-eslint'],
+  plugins: ['prettier', '@typescript-eslint', 'simple-import-sort'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -28,6 +28,7 @@ module.exports = {
     },
   },
   rules: {
+    'simple-import-sort/imports': 'error',
     'prettier/prettier': [
       'error',
       {
