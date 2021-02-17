@@ -1,4 +1,6 @@
-export const mockPollResponse = {
+import { PollResponse } from 'types/api';
+
+export const mockPollResponse: PollResponse = {
   done: true,
   proc_start: '2021-02-14T12:07:34.554992',
   proc_end: '2021-02-14T12:07:42.763940',
