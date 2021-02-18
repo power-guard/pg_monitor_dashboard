@@ -16,13 +16,13 @@ interface MonitorData {
   logs: MonitorDataLog[];
 }
 
-interface Plant {
+export interface Plants {
   [key: string]: MonitorData;
 }
 
 export interface PollResponse {
   done: boolean;
-  proc_start: string;
-  proc_end: string;
-  plants: Plant;
+  proc_start: string | null;
+  proc_end: string | null;
+  plants: Plants;
 }
