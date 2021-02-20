@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import PollResponse
-from .worker import dummy_worker_sma, dummy_worker_solar_edge
+from .worker import dummy_worker_sma, dummy_worker_solar_edge, dummy_worker_ng
 
 logger = logging.getLogger('pg-dashboard')
 
@@ -14,7 +14,8 @@ plant_tuples = [
     ('PGOM100002', 'PV System 2'),
     ('PGOM100003', 'ミラクル福岡パワーフルな太陽光発電所３'),
     ('PGOM100004', 'PGOM100004'),
-    ('PGOM100005', '鹿児島県日置市吹上町')
+    ('PGOM100005', '鹿児島県日置市吹上町'),
+    ('PGOM100006', 'Faulty Power Plant'),
 ]
 response_data = None
 
@@ -67,6 +68,13 @@ def launch_workers():
     try:
         workers['se'] = threading.Thread(target=dummy_worker_solar_edge, args=(response_data,))
         workers['se'].start()
+    except:
+        logger.exception('Failed to start SE thread')
+        raise
+
+    try:
+        workers['ng'] = threading.Thread(target=dummy_worker_ng, args=(response_data,))
+        workers['ng'].start()
     except:
         logger.exception('Failed to start SE thread')
         raise

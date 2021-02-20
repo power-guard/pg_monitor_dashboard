@@ -6,6 +6,10 @@ from .models import DlStatus, Log
 DELAY = 3 # seconds
 
 def dummy_worker_sma(response_data):
+    response_data.update('PGOM100001', DlStatus.RUNNING, None, None, None)
+    response_data.update('PGOM100002', DlStatus.RUNNING, None, None, None)
+    response_data.update('PGOM100003', DlStatus.RUNNING, None, None, None)
+
     sleep(DELAY)
     pgom1001('PGOM100001', response_data)
 
@@ -17,11 +21,20 @@ def dummy_worker_sma(response_data):
 
 
 def dummy_worker_solar_edge(response_data):
+    response_data.update('PGOM100004', DlStatus.RUNNING, None, None, None)
+    response_data.update('PGOM100005', DlStatus.RUNNING, None, None, None)
+
     sleep(DELAY)
     pgom1004('PGOM100004', response_data)
 
     sleep(DELAY)
     pgom1005('PGOM100005', response_data)
+
+
+def dummy_worker_ng(response_data):
+    response_data.update('PGOM100006', DlStatus.RUNNING, None, None, None)
+    sleep(DELAY)
+    response_data.update('PGOM100006', DlStatus.ERROR, None, None, None)
 
 
 def set_date_to_today(iso):
