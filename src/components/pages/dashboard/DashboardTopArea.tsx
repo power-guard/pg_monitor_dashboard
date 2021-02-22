@@ -1,4 +1,5 @@
 import React from 'react';
+import { getFormattedDate, getDistanteToNow } from 'utils/viewUtils';
 
 interface OwnProps {
   done: boolean;
@@ -21,11 +22,11 @@ export const DashboardTopArea = ({ done, proc_start, proc_end }: OwnProps) => {
           </div>
           <div>
             <div>Started</div>
-            <div>{proc_start !== null ? proc_start : '-'}</div>
+            <div>{proc_start !== null ? getFormattedDate(proc_start) + getDistanteToNow(proc_start) : '-'}</div>
           </div>
           <div>
             <div>Finished</div>
-            <div>{proc_end !== null ? proc_end : '-'}</div>
+            <div>{proc_end !== null ? getFormattedDate(proc_end) + getDistanteToNow(proc_end) : '-'}</div>
           </div>
         </div>
       </div>
