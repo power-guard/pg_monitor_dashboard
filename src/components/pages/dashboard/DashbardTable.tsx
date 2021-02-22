@@ -32,7 +32,9 @@ export const DashboardTable = ({ plants }: OwnProps) => {
                 </div>
               ))}
             </td>
-            <td>Table</td>
+            <td>
+              <EnergySeriesChart data={plant.energy_series} />
+            </td>
           </tr>
         ))}
       </tbody>
