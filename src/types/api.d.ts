@@ -5,24 +5,21 @@ interface MonitorDataLog {
 }
 
 interface EnergySeries {
-  [key: string]: number;
+  [key: string]: number | null;
 }
 
-interface MonitorData {
+export interface MonitorData {
+  id: string;
   name: string;
-  has_error: boolean;
+  dl_status: number;
   last_update: null | string;
   energy_series: EnergySeries[];
   logs: MonitorDataLog[];
-}
-
-export interface Plants {
-  [key: string]: MonitorData;
 }
 
 export interface PollResponse {
   done: boolean;
   proc_start: string | null;
   proc_end: string | null;
-  plants: Plants;
+  plants: MonitorData[];
 }

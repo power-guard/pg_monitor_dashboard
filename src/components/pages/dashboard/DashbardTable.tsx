@@ -1,8 +1,8 @@
 import React from 'react';
-import { Plants } from 'types/api';
+import { MonitorData } from 'types/api';
 
 interface OwnProps {
-  plants: Plants;
+  plants: MonitorData[];
 }
 
 export const DashboardTable = ({ plants }: OwnProps) => {
@@ -17,14 +17,14 @@ export const DashboardTable = ({ plants }: OwnProps) => {
         </tr>
       </thead>
       <tbody>
-        {Object.entries(plants).map(([id, data]) => (
-          <tr key={id}>
+        {plants.map((plant) => (
+          <tr key={plant.id}>
             <td>
-              {id} {data.name}
+              {plant.id} {plant.name}
             </td>
-            <td>{data.last_update}</td>
+            <td>{plant.last_update}</td>
             <td>
-              {data.logs.map((log, index) => (
+              {plant.logs.map((log, index) => (
                 <div key={index}>
                   {log.level}
                   {log.date}
