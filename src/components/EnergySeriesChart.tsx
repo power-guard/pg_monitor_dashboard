@@ -67,7 +67,7 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
     };
 
     new Chart(context, { type: 'line', data: { labels, datasets }, options });
-  }, []);
+  }, [data]);
 
   return <canvas ref={canvasRef}></canvas>;
 };
