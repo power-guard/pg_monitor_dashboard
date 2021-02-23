@@ -41,7 +41,7 @@ npm run dev
 
 4. Access the app opening [http://localhost:3000](http://localhost:3000) with your browser.
 
-- To fech mock data from a local server during development follow the instructions in [Srv_README](srv/README.md) and make sure that `NEXT_PUBLIC_FETCH_MOCK_DATA` in `.env.loca` is set as `false`. Otherwise, to fetch mock data from the front-end repository, set `NEXT_PUBLIC_FETCH_MOCK_DATA` as `true`;
+- To fech mock data from a local server during development follow the instructions in [Srv_README](srv/README.md) and make sure that `NEXT_PUBLIC_FETCH_MOCK_DATA` in `.env.local` is set as `false`. Otherwise, to fetch mock data from the front-end repository, set `NEXT_PUBLIC_FETCH_MOCK_DATA` as `true`;
 
 ## Deployment
 
