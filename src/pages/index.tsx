@@ -12,7 +12,7 @@ function HomePage() {
     done: false,
     proc_start: null,
     proc_end: null,
-    plants: {},
+    plants: [],
   });
 
   React.useEffect(() => {

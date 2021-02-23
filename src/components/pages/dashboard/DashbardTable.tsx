@@ -1,8 +1,10 @@
+import { EnergySeriesChart } from 'components/EnergySeriesChart';
 import React from 'react';
-import { Plants } from 'types/api';
+import { MonitorData } from 'types/api';
+import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
 interface OwnProps {
-  plants: Plants;
+  plants: MonitorData[];
 }
 
 export const DashboardTable = ({ plants }: OwnProps) => {
@@ -17,22 +19,24 @@ export const DashboardTable = ({ plants }: OwnProps) => {
         </tr>
       </thead>
       <tbody>
-        {Object.entries(plants).map(([id, data]) => (
-          <tr key={id}>
+        {plants.map((plant) => (
+          <tr key={plant.id}>
             <td>
-              {id} {data.name}
+              {plant.id} {plant.name}
             </td>
-            <td>{data.last_update}</td>
+            <td>{plant.last_update && getDistanteToNow(plant.last_update)}</td>
             <td>
-              {data.logs.map((log, index) => (
+              {plant.logs.map((log, index) => (
                 <div key={index}>
                   {log.level}
-                  {log.date}
+                  {getFormattedDate(log.date)}
                   {log.description}
                 </div>
               ))}
             </td>
-            <td>Table</td>
+            <td>
+              <EnergySeriesChart data={plant.energy_series} />
+            </td>
           </tr>
         ))}
       </tbody>

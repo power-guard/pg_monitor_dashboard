@@ -4,9 +4,9 @@ import { PollResponse } from 'types/api';
 
 export const poll = {
   fetch: (): Promise<PollResponse> => {
-    if (process.env.NEXT_PUBLIC_FETCH_MOCK_DATA) return new Promise((resolve) => resolve(mockPollResponse));
+    if (process.env.NEXT_PUBLIC_FETCH_MOCK_DATA === 'true') return new Promise((resolve) => resolve(mockPollResponse));
 
-    return axiosInstance.get<PollResponse>('/poll').then((res) => {
+    return axiosInstance.get<PollResponse>('/dashboard/poll').then((res) => {
       return res.data;
     });
   },
