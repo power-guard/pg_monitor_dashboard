@@ -29,7 +29,7 @@ export const DashboardTable = ({ plants }: OwnProps) => {
             <th>System ID/Name</th>
             <th>Last Update Time</th>
             <th>Logs</th>
-            <th>Energy Series</th>
+            <th>Energy</th>
           </tr>
         </thead>
         <tbody>
