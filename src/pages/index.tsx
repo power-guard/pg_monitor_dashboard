@@ -3,7 +3,6 @@ import { DashboardTable } from 'components/pages/dashboard/DashbardTable';
 import { DashboardTopArea } from 'components/pages/dashboard/DashboardTopArea';
 import { useFetchPollData } from 'hooks/useFetchPollData';
 import { BaseLayout } from 'layouts/BaseLayout';
-import React from 'react';
 
 function HomePage() {
   const { pollData, isLoading, error } = useFetchPollData();
