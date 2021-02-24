@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFormattedDate, getDistanteToNow } from 'utils/viewUtils';
+import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
 interface OwnProps {
   done: boolean;

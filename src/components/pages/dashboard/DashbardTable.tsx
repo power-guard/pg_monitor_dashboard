@@ -1,9 +1,9 @@
-
-import React, { useState } from 'react';
-import { MonitorData, Plants } from 'types/api';
-import { DashboardPlantModal } from './DashboardPlantModal';
 import { EnergySeriesChart } from 'components/EnergySeriesChart';
+import React, { useState } from 'react';
+import { MonitorData } from 'types/api';
 import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
+
+import { DashboardPlantModal } from './DashboardPlantModal';
 
 interface OwnProps {
   plants: MonitorData[];
@@ -32,47 +32,28 @@ export const DashboardTable = ({ plants }: OwnProps) => {
             <th>Last Update Time</th>
             <th>Logs</th>
             <th>Energy</th>
-        </tr>
-      </thead>
-      <tbody>
-        {plants.map((plant) => (
-          <tr key={plant.id}>
-            <td>
-              {plant.id} {plant.name}
-            </td>
-            <td>{plant.last_update && getDistanteToNow(plant.last_update)}</td>
-            <td>
-              {plant.logs.map((log, index) => (
-                <div key={index}>
-                  {log.level}
-                  {getFormattedDate(log.date)}
-                  {log.description}
-                </div>
-              ))}
-            </td>
-            <td>
-              <EnergySeriesChart data={plant.energy_series} />
-            </td>
           </tr>
         </thead>
         <tbody>
-          {Object.entries(plants).map(([id, data]) => (
-            <tr key={id}>
+          {plants.map((plant) => (
+            <tr key={plant.id}>
               <td>
-                <div onClick={() => onSystemIdClick(data)}>{id}</div>
-                {data.name}
+                <div onClick={() => onSystemIdClick(plant)}>{plant.id}</div>
+                {plant.name}
               </td>
-              <td>{data.last_update}</td>
+              <td>{plant.last_update && getDistanteToNow(plant.last_update)}</td>
               <td>
-                {data.logs.map((log, index) => (
+                {plant.logs.map((log, index) => (
                   <div key={index}>
                     {log.level}
-                    {log.date}
+                    {getFormattedDate(log.date)}
                     {log.description}
                   </div>
                 ))}
               </td>
-              <td>Table</td>
+              <td>
+                <EnergySeriesChart data={plant.energy_series} />
+              </td>
             </tr>
           ))}
         </tbody>

@@ -5,6 +5,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier/@typescript-eslint',
+    'plugin:testing-library/react',
+    'plugin:jest-dom/recommended',
   ],
   plugins: ['prettier', '@typescript-eslint', 'simple-import-sort'],
   parser: '@typescript-eslint/parser',
@@ -20,6 +22,7 @@ module.exports = {
     es6: true,
     browser: true,
     node: true,
+    jest: true,
   },
   settings: {
     react: {
@@ -38,4 +41,12 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/*.{ts,tsx}'],
+      rules: {
+        'no-unused-vars': 'off',
+      },
+    },
+  ],
 };
