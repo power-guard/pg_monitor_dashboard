@@ -1,10 +1,12 @@
+
 import React, { useState } from 'react';
 import { MonitorData, Plants } from 'types/api';
-
 import { DashboardPlantModal } from './DashboardPlantModal';
+import { EnergySeriesChart } from 'components/EnergySeriesChart';
+import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
 interface OwnProps {
-  plants: Plants;
+  plants: MonitorData[];
 }
 
 export const DashboardTable = ({ plants }: OwnProps) => {
@@ -30,6 +32,27 @@ export const DashboardTable = ({ plants }: OwnProps) => {
             <th>Last Update Time</th>
             <th>Logs</th>
             <th>Energy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {plants.map((plant) => (
+          <tr key={plant.id}>
+            <td>
+              {plant.id} {plant.name}
+            </td>
+            <td>{plant.last_update && getDistanteToNow(plant.last_update)}</td>
+            <td>
+              {plant.logs.map((log, index) => (
+                <div key={index}>
+                  {log.level}
+                  {getFormattedDate(log.date)}
+                  {log.description}
+                </div>
+              ))}
+            </td>
+            <td>
+              <EnergySeriesChart data={plant.energy_series} />
+            </td>
           </tr>
         </thead>
         <tbody>
