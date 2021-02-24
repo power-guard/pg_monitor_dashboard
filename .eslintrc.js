@@ -20,6 +20,7 @@ module.exports = {
     es6: true,
     browser: true,
     node: true,
+    jest: true,
   },
   settings: {
     react: {
@@ -38,4 +39,12 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/*.{ts,tsx}'],
+      rules: {
+        'no-unused-vars': 'off',
+      },
+    },
+  ],
 };
