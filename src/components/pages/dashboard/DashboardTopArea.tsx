@@ -1,4 +1,3 @@
-import React from 'react';
 import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
 interface OwnProps {
