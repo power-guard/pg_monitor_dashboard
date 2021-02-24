@@ -1,38 +1,28 @@
-import { AxiosError } from 'axios';
 import { Head } from 'components/Head';
 import { DashboardTable } from 'components/pages/dashboard/DashbardTable';
 import { DashboardTopArea } from 'components/pages/dashboard/DashboardTopArea';
+import { useFetchPollData } from 'hooks/useFetchPollData';
 import { BaseLayout } from 'layouts/BaseLayout';
-import React, { useState } from 'react';
-import { poll } from 'services/pollService';
-import { PollResponse } from 'types/api';
+import React from 'react';
 
 function HomePage() {
-  const [data, setData] = useState<PollResponse>({
-    done: false,
-    proc_start: null,
-    proc_end: null,
-    plants: [],
-  });
+  const { pollData, isLoading, error } = useFetchPollData();
 
-  React.useEffect(() => {
-    poll
-      .fetch()
-      .then((data: PollResponse) => {
-        console.log(data);
-        setData(data);
-      })
-      .catch((error: AxiosError) => {
-        //TODO: proper error handling.
-        console.log(error);
-      });
-  }, []);
+  console.log(pollData);
+
+  if (error) {
+    return <BaseLayout>Display error message</BaseLayout>;
+  }
+
+  if (isLoading) {
+    return <BaseLayout>Display loading spinner</BaseLayout>;
+  }
 
   return (
     <BaseLayout>
       <Head />
-      <DashboardTopArea done={data.done} proc_start={data.proc_start} proc_end={data.proc_end} />
-      <DashboardTable plants={data.plants} />
+      <DashboardTopArea done={pollData.done} proc_start={pollData.proc_start} proc_end={pollData.proc_end} />
+      <DashboardTable plants={pollData.plants} />
     </BaseLayout>
   );
 }
