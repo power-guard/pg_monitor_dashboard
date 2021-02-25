@@ -10,5 +10,5 @@ export const getDistanteToNow = (iso: string): string => {
 };
 
 export const getFormattedDate = (iso: string, formatting?: string): string => {
-  return format(getIsoToLocalDate(iso), formatting ? formatting : 'yyyy-MM-dd kk:mm:ss');
+  return format(getIsoToLocalDate(iso), formatting ? formatting : 'yyyy-MM-dd HH:mm:ss');
 };
