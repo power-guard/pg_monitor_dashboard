@@ -1,33 +1,21 @@
 import React from 'react';
-import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
-interface OwnProps {
-  done: boolean;
-  proc_start: null | string;
-  proc_end: null | string;
-}
+import { DashboardProcessCard, DashboardProcessCardProps } from './DashboardProcessCard';
 
-export const DashboardTopArea = ({ done, proc_start, proc_end }: OwnProps) => {
+interface OwnProps extends DashboardProcessCardProps {}
+
+export const DashboardTopArea = (props: OwnProps) => {
   return (
-    <div>
-      <div>
-        <h1>PG Monitoring Utilities</h1>
-        <h2>PG Monitor Dashboard</h2>
-      </div>
-      <div>
+    <div className="bg-warmGray-100 fixed w-full">
+      <div className="pt-16 min-w-screen-xl max-w-screen-2xl m-auto flex px-4">
+        <div className="flex flex-grow items-center">
+          <div>
+            <h1 className="text-3xl font-bold">PG Monitoring Utilities</h1>
+            <h2 className="text-base">PG Monitor Dashboard</h2>
+          </div>
+        </div>
         <div>
-          <div>
-            <div>Data Collection Process</div>
-            <div>{done ? 'Complete' : 'Running'}</div>
-          </div>
-          <div>
-            <div>Started</div>
-            <div>{proc_start !== null ? getFormattedDate(proc_start) + getDistanteToNow(proc_start) : '-'}</div>
-          </div>
-          <div>
-            <div>Finished</div>
-            <div>{proc_end !== null ? getFormattedDate(proc_end) + getDistanteToNow(proc_end) : '-'}</div>
-          </div>
+          <DashboardProcessCard {...props} />
         </div>
       </div>
     </div>
