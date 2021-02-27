@@ -8,9 +8,9 @@ interface OwnProps {
 
 export const BaseLayout = ({ children }: OwnProps) => {
   return (
-    <div>
+    <div className="bg-warmGray-100">
       <Header />
-      <main>{children}</main>
+      <main className="h-full text-sm text-warmGray-900">{children}</main>
       <Footer />
     </div>
   );

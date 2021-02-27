@@ -21,8 +21,10 @@ function HomePage() {
   return (
     <BaseLayout>
       <Head />
-      <DashboardTopArea done={pollData.done} proc_start={pollData.proc_start} proc_end={pollData.proc_end} />
-      <DashboardTable plants={pollData.plants} />
+      <div>
+        <DashboardTopArea done={pollData.done} proc_start={pollData.proc_start} proc_end={pollData.proc_end} />
+        <DashboardTable plants={pollData.plants} />
+      </div>
     </BaseLayout>
   );
 }
