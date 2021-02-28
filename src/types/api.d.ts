@@ -1,4 +1,4 @@
-interface MonitorDataLog {
+export interface MonitorDataLog {
   date: string;
   level: 'INFO' | 'WARNING' | 'ERROR';
   description: string;
