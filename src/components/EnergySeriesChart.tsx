@@ -15,9 +15,9 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
     const context = canvasRef?.current?.getContext('2d');
 
     //Doesn't render chart when no series data or canvas.
-    if (!context || data.length < 1) return;
+    if (!context) return;
 
-    const labels = Object.entries(data[0]).map(([key]) => key);
+    const labels = data.length > 0 ? Object.entries(data[0]).map(([key]) => key) : [];
 
     const datasets = data.map((series, index) => {
       return {
@@ -52,7 +52,7 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
           },
         ],
         xAxes: [{ display: false }], //Not displaying x labels to save vertical space.
-          },
+      },
       legend: { display: false },
       animation: { duration: 0 }, //To improve performance
       responsiveAnimationDuration: 0, //To improve performance
