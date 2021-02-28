@@ -8,10 +8,18 @@ import React from 'react';
 function HomePage() {
   const { pollData, isLoading, error } = useFetchPollData();
 
-  console.log(pollData);
-
   if (error) {
-    return <BaseLayout>Display error message</BaseLayout>;
+    return (
+      <BaseLayout>
+        <div className="h-screen flex items-center justify-center">
+          <div className="flex flex-col text-center text-brand-600">
+            <img src="/error.svg" alt="Error icon" className="w-24 mb-6 m-auto" />
+            <div className="text-lg font-semibold">An unexpected error occurred.</div>
+            <div className="text-sm">Please contact the system administrator.</div>
+          </div>
+        </div>
+      </BaseLayout>
+    );
   }
 
   if (isLoading) {

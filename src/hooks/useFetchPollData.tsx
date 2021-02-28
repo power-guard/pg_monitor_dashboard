@@ -35,6 +35,7 @@ export const useFetchPollData = () => {
         })
 
         .catch((error: AxiosError) => {
+          console.log(error);
           setError(error);
           if (isInitialFetch) setIsLoading(false);
         });
