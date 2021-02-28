@@ -26,16 +26,19 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
         pointBackgroundColor: getChartLineColors(index),
         fill: false,
         borderWidth: 1.5,
-        pointHitRadius: 4,
-        pointBorderWidth: 0.1,
-        pointRadius: 1.5,
-        pointHoverRadius: 1.5,
+        pointHitRadius: 0,
       };
     });
 
     const options = {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
+      tooltips: { enabled: false },
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
       scales: {
         yAxes: [
           {
@@ -48,21 +51,10 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
             },
           },
         ],
-        xAxes: [
-          {
-            display: false, //Not displaying x labels to save vertical space.
+        xAxes: [{ display: false }], //Not displaying x labels to save vertical space.
           },
-        ],
-      },
-      legend: {
-        display: false,
-      },
-      animation: {
-        duration: 0, //To improve performance
-      },
-      hover: {
-        animationDuration: 0, //To improve performance
-      },
+      legend: { display: false },
+      animation: { duration: 0 }, //To improve performance
       responsiveAnimationDuration: 0, //To improve performance
     };
 
