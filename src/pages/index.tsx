@@ -1,4 +1,5 @@
 import { Head } from 'components/Head';
+import { LoadingSpinner } from 'components/LoadingSpinner';
 import { DashboardTable } from 'components/pages/dashboard/DashbardTable';
 import { DashboardTopArea } from 'components/pages/dashboard/DashboardTopArea';
 import { useFetchPollData } from 'hooks/useFetchPollData';
@@ -22,8 +23,14 @@ function HomePage() {
     );
   }
 
-  if (isLoading) {
-    return <BaseLayout>Display loading spinner</BaseLayout>;
+  if (isLoading || pollData.proc_start === null) {
+    return (
+      <BaseLayout>
+        <div className="h-screen flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      </BaseLayout>
+    );
   }
 
   return (
