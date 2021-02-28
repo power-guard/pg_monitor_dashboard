@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 .loader {
-  border-top-color: #fafbaf;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
+}
+
+.loader-warning {
+  border-top-color: #fafbaf;
+}
+
+.loader-primary {
+  border-top-color: #4c7941;
 }
 
 @-webkit-keyframes spinner {

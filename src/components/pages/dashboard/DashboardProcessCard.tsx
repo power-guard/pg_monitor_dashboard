@@ -21,7 +21,7 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
           ) : (
             <div className="flex">
               <div className="pr-1 transform translate-y-1">
-                <LoadingSpinner />
+                <LoadingSpinner color="warning" size="sm" />
               </div>
               Running
             </div>

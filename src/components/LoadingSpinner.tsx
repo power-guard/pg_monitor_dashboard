@@ -1,5 +1,24 @@
 import * as React from 'react';
 
-export const LoadingSpinner = () => {
-  return <div className="loader ease-linear rounded-full border-4 border-t-4 border-yellow-400 h-3 w-3"></div>;
+interface OwnProps {
+  size?: 'sm' | 'default';
+  color?: 'primary' | 'warning';
+}
+
+const colors = {
+  primary: { className: 'loader-primary', border: 'border-gray-200' },
+  warning: { className: 'loader-warning', border: 'border-yellow-400' },
+};
+
+const sizes = {
+  sm: 'h-3 w-3',
+  default: 'h-12 w-12',
+};
+
+export const LoadingSpinner = ({ size = 'default', color = 'primary' }: OwnProps) => {
+  return (
+    <div
+      className={`loader ease-linear rounded-full border-4 border-t-4 ${sizes[size]} ${colors[color].className} ${colors[color].border}`}
+    ></div>
+  );
 };
