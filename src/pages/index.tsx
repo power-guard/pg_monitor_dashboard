@@ -38,7 +38,9 @@ function HomePage() {
       <Head />
       <div>
         <DashboardTopArea done={pollData.done} proc_start={pollData.proc_start} proc_end={pollData.proc_end} />
-        <DashboardTable plants={pollData.plants} />
+        <div className="px-4 min-w-screen-xl max-w-screen-2xl m-auto pt-60">
+          <DashboardTable plants={pollData.plants} />
+        </div>
       </div>
     </BaseLayout>
   );
