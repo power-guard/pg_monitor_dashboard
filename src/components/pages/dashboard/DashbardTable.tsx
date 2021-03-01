@@ -1,9 +1,9 @@
-import { EnergySeriesChart } from 'components/EnergySeriesChart';
 import React, { useState } from 'react';
 import { MonitorData } from 'types/api';
-import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
 
 import { DashboardPlantModal } from './DashboardPlantModal';
+import { DashboardTableRow } from './DashboardTableRow';
+import { DashboardTableRowDisabled } from './DashboardTableRowDisabled';
 
 interface OwnProps {
   plants: MonitorData[];
@@ -25,37 +25,23 @@ export const DashboardTable = ({ plants }: OwnProps) => {
 
   return (
     <>
-      <table>
+      <table className="w-full bg-white rounded-b-lg rounded-l-lg shadow-lg mb-8">
         <thead>
           <tr>
-            <th>System ID/Name</th>
-            <th>Last Update Time</th>
-            <th>Logs</th>
-            <th>Energy</th>
+            <th className="w-56"></th>
+            <th className="w-52"></th>
+            <th className=""></th>
+            <th className="w-128"></th>
           </tr>
         </thead>
         <tbody>
-          {plants.map((plant) => (
-            <tr key={plant.id}>
-              <td>
-                <div onClick={() => onSystemIdClick(plant)}>{plant.id}</div>
-                {plant.name}
-              </td>
-              <td>{plant.last_update && getDistanteToNow(plant.last_update)}</td>
-              <td>
-                {plant.logs.map((log, index) => (
-                  <div key={index}>
-                    {log.level}
-                    {getFormattedDate(log.date)}
-                    {log.description}
-                  </div>
-                ))}
-              </td>
-              <td>
-                <EnergySeriesChart data={plant.energy_series} />
-              </td>
-            </tr>
-          ))}
+          {plants.map((plant, index) =>
+            plant.dl_status === 2 ? (
+              <DashboardTableRow key={plant.id} index={index} plant={plant} onSystemIdClick={onSystemIdClick} />
+            ) : (
+              <DashboardTableRowDisabled key={plant.id} index={index} plant={plant} />
+            ),
+          )}
         </tbody>
       </table>
       {isModalOpen && <DashboardPlantModal data={activePlant} onClose={onModalClose} />}

@@ -1,3 +1,4 @@
+import { Lamp } from 'components/Lamp';
 import { LoadingSpinner } from 'components/LoadingSpinner';
 import React from 'react';
 import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
@@ -21,7 +22,7 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
           ) : (
             <div className="flex">
               <div className="pr-1 transform translate-y-1">
-                <LoadingSpinner />
+                <LoadingSpinner color="warning" size="sm" />
               </div>
               Running
             </div>
@@ -33,7 +34,7 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
         <div className="w-20 text-right text-gray-500 px-3 mr-3">Started</div>
         <div className="flex-grow">
           <div className="flex items-center">
-            <div className={`w-3 h-3 mr-1 rounded-full ${proc_start !== null ? 'bg-green-500' : 'bg-gray-200'}`} />
+            <Lamp type={proc_start !== null ? 'success' : 'default'} />
             <div className="whitespace-nowrap">{proc_start !== null ? getDistanteToNow(proc_start) : ''}</div>
           </div>
         </div>
@@ -48,7 +49,7 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
         <div className="w-20 text-right text-gray-500 px-3 mr-3">Finished</div>
         <div className="flex-grow">
           <div className="flex items-center">
-            <div className={`w-3 h-3 mr-1 rounded-full ${proc_end !== null ? 'bg-green-500' : 'bg-gray-200'}`} />
+            <Lamp type={proc_end !== null ? 'success' : 'default'} />
             <div className="whitespace-nowrap">{proc_end !== null ? getDistanteToNow(proc_end) : ''}</div>
           </div>
         </div>

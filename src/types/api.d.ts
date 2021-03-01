@@ -1,4 +1,4 @@
-interface MonitorDataLog {
+export interface MonitorDataLog {
   date: string;
   level: 'INFO' | 'WARNING' | 'ERROR';
   description: string;
@@ -11,7 +11,7 @@ interface EnergySeries {
 export interface MonitorData {
   id: string;
   name: string;
-  dl_status: number;
+  dl_status: 0 | 1 | 2 | 4;
   last_update: null | string;
   energy_series: EnergySeries[];
   logs: MonitorDataLog[];
