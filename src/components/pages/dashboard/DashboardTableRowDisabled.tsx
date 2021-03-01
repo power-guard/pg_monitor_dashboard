@@ -42,7 +42,7 @@ export const DashboardTableRowDisabled = ({ plant, index }: OwnProps) => {
       </td>
 
       <td className={`${verticalPadding} pr-12`}>
-        <div className="max-h-56 opacity-50">
+        <div className="max-h-56">
           <EnergySeriesChart data={plant.energy_series} />
         </div>
       </td>
