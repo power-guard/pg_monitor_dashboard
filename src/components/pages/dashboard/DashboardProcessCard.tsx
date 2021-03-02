@@ -1,7 +1,9 @@
 import { Lamp } from 'components/Lamp';
 import { LoadingSpinner } from 'components/LoadingSpinner';
-import React from 'react';
-import { getDistanteToNow, getFormattedDate } from 'utils/viewUtils';
+import { Tooltip } from 'components/Tooltip';
+import { CONFIG } from 'config/admin';
+import React, { useEffect, useState } from 'react';
+import { getDistanteToNow, getElapsedTime, getFormattedDate } from 'utils/viewUtils';
 
 export interface DashboardProcessCardProps {
   done: boolean;
@@ -10,6 +12,16 @@ export interface DashboardProcessCardProps {
 }
 
 export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardProcessCardProps) => {
+  const [isAlertOn, setIsAlertOn] = useState(false);
+
+  useEffect(() => {
+    const elapsedTime = getElapsedTime(proc_start!);
+
+    console.log(elapsedTime);
+
+    if (elapsedTime > CONFIG.PROC_START_ALERT_THRESHOLD) setIsAlertOn(true);
+  }, []);
+
   return (
     <div className="bg-white rounded-lg shadow-md px-5 py-3 w-96">
       <div className="flex justify-between mb-3">
@@ -34,8 +46,12 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
         <div className="w-20 text-right text-gray-500 px-3 mr-3">Started</div>
         <div className="flex-grow">
           <div className="flex items-center">
-            <Lamp type={proc_start !== null ? 'success' : 'default'} />
-            <div className="whitespace-nowrap">{proc_start !== null ? getDistanteToNow(proc_start) : ''}</div>
+            <Lamp type={proc_start === null ? 'default' : isAlertOn ? 'error' : 'success'} />
+            <Tooltip title="Recommended solution: Restart the utility server." isOpen={isAlertOn} disableHoverListener>
+              <div className={`whitespace-nowrap ${isAlertOn ? 'text-red-500' : ''}`}>
+                {proc_start !== null ? getDistanteToNow(proc_start) : ''}
+              </div>
+            </Tooltip>
           </div>
         </div>
         <div className="flex items-center">
