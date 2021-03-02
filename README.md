@@ -45,4 +45,14 @@ npm run dev
 
 ## Deployment
 
-TBD
+To export the application to static HTML, in order to run the app standalone without the need of a Node.js server:
+
+1. Set the backend API URI in `.env.local > NEXT_PUBLIC_API_BASE_URL`.
+
+2. Run the following script.
+
+```bash
+npm run export
+```
+
+Files are exported into the `out` directory.
