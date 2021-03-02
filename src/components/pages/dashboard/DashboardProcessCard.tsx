@@ -16,9 +16,6 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
 
   useEffect(() => {
     const elapsedTime = getElapsedTime(proc_start!);
-
-    console.log(elapsedTime);
-
     if (elapsedTime > CONFIG.PROC_START_ALERT_THRESHOLD) setIsAlertOn(true);
   }, []);
 
