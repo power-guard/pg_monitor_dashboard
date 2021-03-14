@@ -38,7 +38,7 @@ export const DashboardTableRow = ({ plant, index, onSystemIdClick }: OwnProps) =
         {plant.logs.length > 0 ? (
           <div>
             {plant.logs.slice(0, 5).map((log, index) => (
-              <DashboardLogRow key={index} log={log} />
+              <DashboardLogRow isTruncated key={index} log={log} />
             ))}
 
             {plant.logs.length > 5 ? (
