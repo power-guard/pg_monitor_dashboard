@@ -1,4 +1,4 @@
-import { getDistanteToNow, getFormattedDate, getElapsedTime } from 'utils/viewUtils';
+import { getDistanteToNow, getElapsedTime, getFormattedDate } from 'utils/viewUtils';
 
 describe('getIsoToLocalDate', () => {
   it('transforms UTC iso to local time date', () => {
