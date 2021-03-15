@@ -13,7 +13,9 @@ const levels = {
 
 export const DashboardLogLevelTag = ({ level }: OwnProps) => {
   return (
-    <div className={`text-white ${levels[level].color} px-1.5 py-0.25 w-14 rounded text-xs inline-block text-center`}>
+    <div
+      className={`text-white ${levels[level].color} px-1.5 py-0.25 w-14 rounded text-xs inline-block text-center h-full`}
+    >
       {levels[level].name}
     </div>
   );

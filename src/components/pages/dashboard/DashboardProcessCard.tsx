@@ -17,7 +17,7 @@ export const DashboardProcessCard = ({ done, proc_start, proc_end }: DashboardPr
   useEffect(() => {
     const elapsedTime = getElapsedTime(proc_start!);
     if (elapsedTime > CONFIG.PROC_START_ALERT_THRESHOLD) setIsAlertOn(true);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="bg-white rounded-lg shadow-md px-5 py-3 w-96">
