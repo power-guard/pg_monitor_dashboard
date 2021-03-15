@@ -36,7 +36,7 @@ nvm use
 nvm install 14.15.2
 ```
 
-2. From inside the project directory, run the following commadn to install project dependencies. For a recommended version of npm, check `package.json > engines > npm`.
+2. From inside the project directory, run the following command to install project dependencies. For a recommended version of npm, check `package.json > engines > npm`.
 
 ```bash
 npm install
