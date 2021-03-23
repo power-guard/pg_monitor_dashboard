@@ -51,12 +51,31 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
             },
           },
         ],
-        xAxes: [{ display: false }], //Not displaying x labels to save vertical space.
+        xAxes: [
+          {
+            type: 'time',
+            time: {
+              unit: 'minute',
+              stepSize: 60,
+              displayFormats: {
+                minute: 'h:mm',
+              },
+            },
+            ticks: {
+              fontColor: data.length > 0 ? '#1C1917' : '#F3F4F6', //Hack to hide badly parsed tick values while maintaining height space for ticks. (For the sake of layout stability)
+              maxTicksLimit: 3,
+              maxRotation: 0,
+              minRotation: 0,
+              fontSize: 11,
+              lineHeight: 0.4,
+            },
+          },
+        ],
       },
       legend: { display: false },
       animation: { duration: 0 }, //To improve performance
       responsiveAnimationDuration: 0, //To improve performance
-    };
+    } as Chart.ChartConfiguration;
 
     new Chart(context, { type: 'line', data: { labels, datasets }, options });
   }, [data]);
