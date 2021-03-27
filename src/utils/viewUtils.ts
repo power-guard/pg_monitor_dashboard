@@ -1,8 +1,7 @@
-import { addMinutes, format, formatDistanceToNowStrict, isValid, parseISO } from 'date-fns';
+import { format, formatDistanceToNowStrict, isValid, parseISO } from 'date-fns';
 
 const getIsoToLocalDate = (iso: string): Date => {
-  const date = parseISO(iso);
-  return addMinutes(date, -date.getTimezoneOffset());
+  return parseISO(iso);
 };
 
 export const getDistanteToNow = (iso: string): string => {

@@ -24,7 +24,7 @@ export const DashboardTopArea = (props: OwnProps) => {
           <div className="py-2 pl-12 pr-6 whitespace-nowrap w-56">System ID/Name</div>
           <div className="py-2 px-6 whitespace-nowrap w-52">Last Update Time</div>
           <div className="py-2 px-6 whitespace-nowrap flex-grow">Logs</div>
-          <div className="py-2 pl-6 pr-12 whitespace-nowrap w-128">Energy</div>
+          <div className="py-2 pl-6 pr-12 whitespace-nowrap w-128">Energy (kWh)</div>
         </div>
       </div>
     </div>

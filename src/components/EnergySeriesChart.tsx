@@ -42,21 +42,48 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
       scales: {
         yAxes: [
           {
+            scaleLabel: {
+              display: data.length > 0,
+              labelString: 'Energy (kWh)',
+              fontColor: '#6B7280',
+              fontFamily: ' Arial, Helvetica, sans-serif',
+              fontStyle: 'bold',
+              fontSize: 12,
+            },
             ticks: {
               beginAtZero: true,
               maxTicksLimit: 6, //To avoid having the y axis to crowded with labels.
             },
             afterFit: function (scaleInstance: any) {
-              scaleInstance.width = 60;
+              scaleInstance.width = 80;
             },
           },
         ],
-        xAxes: [{ display: false }], //Not displaying x labels to save vertical space.
+        xAxes: [
+          {
+            type: 'time',
+            time: {
+              unit: 'minute',
+              stepSize: 60,
+              displayFormats: {
+                minute: 'H:mm',
+              },
+            },
+            ticks: {
+              fontColor: data.length > 0 ? '#1C1917' : '#F3F4F6', //Hack to hide badly parsed tick values while maintaining height space for ticks. (For the sake of layout stability)
+              maxTicksLimit: 3,
+              maxRotation: 0,
+              minRotation: 0,
+              fontSize: 11,
+              lineHeight: 0.4,
+            },
+          },
+        ],
       },
       legend: { display: false },
       animation: { duration: 0 }, //To improve performance
       responsiveAnimationDuration: 0, //To improve performance
-    };
+    } as Chart.ChartConfiguration;
 
     new Chart(context, { type: 'line', data: { labels, datasets }, options });
   }, [data]);
