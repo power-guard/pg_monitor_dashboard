@@ -42,12 +42,20 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
       scales: {
         yAxes: [
           {
+            scaleLabel: {
+              display: data.length > 0,
+              labelString: 'Energy (kWh)',
+              fontColor: '#6B7280',
+              fontFamily: ' Arial, Helvetica, sans-serif',
+              fontStyle: 'bold',
+              fontSize: 12,
+            },
             ticks: {
               beginAtZero: true,
               maxTicksLimit: 6, //To avoid having the y axis to crowded with labels.
             },
             afterFit: function (scaleInstance: any) {
-              scaleInstance.width = 60;
+              scaleInstance.width = 80;
             },
           },
         ],
