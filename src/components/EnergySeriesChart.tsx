@@ -58,7 +58,7 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
               unit: 'minute',
               stepSize: 60,
               displayFormats: {
-                minute: 'h:mm',
+                minute: 'H:mm',
               },
             },
             ticks: {
