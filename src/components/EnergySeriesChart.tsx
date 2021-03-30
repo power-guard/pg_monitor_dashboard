@@ -55,7 +55,7 @@ export const EnergySeriesChart = ({ data }: OwnProps) => {
               maxTicksLimit: 6, //To avoid having the y axis to crowded with labels.
             },
             afterFit: function (scaleInstance: any) {
-              scaleInstance.width = 80;
+              scaleInstance.width = 60;
             },
           },
         ],
