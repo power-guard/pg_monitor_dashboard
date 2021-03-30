@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface OwnProps {
-  type?: 'default' | 'success' | 'warning' | 'error';
+  type?: 'default' | 'success' | 'warning' | 'error' | 'info';
   className?: string;
 }
 
@@ -10,6 +10,7 @@ export const lampColors = {
   success: 'bg-green-500',
   warning: 'bg-yellow-500',
   error: 'bg-red-500',
+  info: 'bg-gray-400',
 };
 
 export const Lamp = ({ type = 'default', className = '' }: OwnProps) => {

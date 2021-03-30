@@ -29,8 +29,17 @@ export const DashboardTableRow = ({ plant, index, onSystemIdClick }: OwnProps) =
 
       <td className={`${verticalPadding} px-6`}>
         <div className="flex items-center whitespace-nowrap">
-          <Lamp type="success" />
-          {plant.last_update && getDistanteToNow(plant.last_update)}
+          {plant.last_update ? (
+            <>
+              <Lamp type="success" />
+              {plant.last_update && getDistanteToNow(plant.last_update)}
+            </>
+          ) : (
+            <>
+              <Lamp type="info" />
+              <span className="italic text-gray-700">No data</span>
+            </>
+          )}
         </div>
       </td>
 
