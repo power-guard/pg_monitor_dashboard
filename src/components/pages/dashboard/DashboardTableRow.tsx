@@ -1,8 +1,9 @@
 import { EnergySeriesChart } from 'components/EnergySeriesChart';
 import { Lamp } from 'components/Lamp';
+import { CONFIG } from 'config/admin';
 import React from 'react';
 import { MonitorData } from 'types/api';
-import { getDistanteToNow } from 'utils/viewUtils';
+import { getDistanteToNow, getElapsedTime } from 'utils/viewUtils';
 
 import { DashboardLogRow } from './DashboardLogRow';
 
@@ -31,7 +32,9 @@ export const DashboardTableRow = ({ plant, index, onSystemIdClick }: OwnProps) =
         <div className="flex items-center whitespace-nowrap">
           {plant.last_update ? (
             <>
-              <Lamp type="success" />
+              <Lamp
+                type={getElapsedTime(plant.last_update) > CONFIG.LAST_UPDATE_ALERT_THRESHOLD ? 'error' : 'success'}
+              />
               {plant.last_update && getDistanteToNow(plant.last_update)}
             </>
           ) : (
